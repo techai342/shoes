@@ -1,31 +1,30 @@
-
-import React, { useState, useEffect } from 'react';
-import { ShieldCheck, ArrowLeft, Loader2, Lock } from 'lucide-react';
+import React, { useState } from 'react'
+import { ShieldCheck, ArrowLeft, Loader2, Lock } from 'lucide-react'
 
 const AdminLogin: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
+    e.preventDefault()
+    setIsLoading(true)
+    setError('')
     
     // Simulate terminal authentication delay
     setTimeout(() => {
       if (username.trim().toLowerCase() === 'saqib' && password.trim() === '242242') {
-        localStorage.setItem('bts_admin_auth', 'true');
+        localStorage.setItem('bts_admin_auth', 'true')
         // Dispatch custom event to notify App component
-        window.dispatchEvent(new Event('authChange'));
-        window.location.hash = '#/admin/dashboard';
+        window.dispatchEvent(new Event('authChange'))
+        window.location.hash = '#/admin/dashboard'
       } else {
-        setError('CRITICAL ERROR: ACCESS DENIED. CLEARANCE LEVEL 0 DETECTED.');
-        setIsLoading(false);
+        setError('CRITICAL ERROR: ACCESS DENIED. CLEARANCE LEVEL 0 DETECTED.')
+        setIsLoading(false)
       }
-    }, 1500);
-  };
+    }, 1500)
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center px-8 relative overflow-hidden">
@@ -114,7 +113,7 @@ const AdminLogin: React.FC = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminLogin;
+export default AdminLogin
