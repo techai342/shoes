@@ -1,35 +1,34 @@
-
-import React, { useRef, useEffect } from 'react';
-import { ArrowRight, Zap } from 'lucide-react';
+import React, { useRef } from 'react'
+import { ArrowRight, Zap } from 'lucide-react'
 
 const Hero: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const shoeRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const shoeRef = useRef<HTMLDivElement>(null)
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!shoeRef.current || !containerRef.current) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
+    if (!shoeRef.current || !containerRef.current) return
+    const { clientX, clientY } = e
+    const { innerWidth, innerHeight } = window
     
     // Calculate rotation based on cursor distance from center
-    const xVal = (clientX - innerWidth / 2) / 20;
-    const yVal = (clientY - innerHeight / 2) / 20;
+    const xVal = (clientX - innerWidth / 2) / 20
+    const yVal = (clientY - innerHeight / 2) / 20
     
-    shoeRef.current.style.transform = `rotateY(${xVal}deg) rotateX(${-yVal}deg) translateZ(50px)`;
-  };
+    shoeRef.current.style.transform = `rotateY(${xVal}deg) rotateX(${-yVal}deg) translateZ(50px)`
+  }
 
   const handleMouseLeave = () => {
-    if (!shoeRef.current) return;
-    shoeRef.current.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`;
-  };
+    if (!shoeRef.current) return
+    shoeRef.current.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`
+  }
 
   const scrollToProducts = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('products');
+    e.preventDefault()
+    const element = document.getElementById('products')
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth' })
     }
-  };
+  }
 
   return (
     <section 
@@ -103,7 +102,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
