@@ -1,40 +1,39 @@
-
-import React, { useState, useEffect } from 'react';
-import { Mail, Globe, ShieldCheck, Truck, ArrowRight } from 'lucide-react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import ProductCard from '../components/ProductCard';
-import Footer from '../components/Footer';
-import { Product } from '../types';
-import { INITIAL_PRODUCTS, CATEGORIES } from '../constants';
+import React, { useState, useEffect } from 'react'
+import { Globe, ShieldCheck, Truck } from 'lucide-react'
+import Header from '../components/Header'
+import Hero from '../components/Hero'
+import ProductCard from '../components/ProductCard'
+import Footer from '../components/Footer'
+import { Product } from '../types'
+import { INITIAL_PRODUCTS, CATEGORIES } from '../constants'
 
 const Home: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [products, setProducts] = useState<Product[]>([])
+  const [activeCategory, setActiveCategory] = useState('All')
 
   useEffect(() => {
     const updateData = () => {
-      const savedProducts = localStorage.getItem('bts_products');
+      const savedProducts = localStorage.getItem('bts_products')
       if (savedProducts) {
-        setProducts(JSON.parse(savedProducts));
+        setProducts(JSON.parse(savedProducts))
       } else {
-        setProducts(INITIAL_PRODUCTS);
-        localStorage.setItem('bts_products', JSON.stringify(INITIAL_PRODUCTS));
+        setProducts(INITIAL_PRODUCTS)
+        localStorage.setItem('bts_products', JSON.stringify(INITIAL_PRODUCTS))
       }
-    };
+    }
 
-    updateData();
-    window.addEventListener('storage', updateData);
-    const interval = setInterval(updateData, 2000);
+    updateData()
+    window.addEventListener('storage', updateData)
+    const interval = setInterval(updateData, 2000)
     return () => {
-      window.removeEventListener('storage', updateData);
-      clearInterval(interval);
-    };
-  }, []);
+      window.removeEventListener('storage', updateData)
+      clearInterval(interval)
+    }
+  }, [])
 
   const filteredProducts = activeCategory === 'All' 
     ? products 
-    : products.filter(p => p.category === activeCategory);
+    : products.filter(p => p.category === activeCategory)
 
   return (
     <div className="bg-slate-950 text-white selection:bg-blue-500 selection:text-white scroll-smooth min-h-screen flex flex-col">
@@ -151,7 +150,7 @@ const Home: React.FC = () => {
 
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
