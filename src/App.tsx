@@ -6,7 +6,6 @@ import HubPage from './pages/HubPage'
 
 const App: React.FC = () => {
   const [hash, setHash] = useState(window.location.hash || '#/')
-  const [authTrigger, setAuthTrigger] = useState(0)
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -19,17 +18,13 @@ const App: React.FC = () => {
       window.scrollTo(0, 0)
     }
 
-    const handleAuth = () => setAuthTrigger(prev => prev + 1)
-
     window.addEventListener('hashchange', handleHashChange)
-    window.addEventListener('authChange', handleAuth)
     
     // Initial check
     handleHashChange()
 
     return () => {
       window.removeEventListener('hashchange', handleHashChange)
-      window.removeEventListener('authChange', handleAuth)
     }
   }, [])
 
