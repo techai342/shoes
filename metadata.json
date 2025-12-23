@@ -1,0 +1,7 @@
+{
+  "name": "Back To Streets",
+  "description": "Premium Pakistani Streetwear and Sneaker Store with a modern neon street aesthetic.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
